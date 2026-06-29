@@ -53,7 +53,7 @@ body.mc-has-shell #SITE_FOOTER,
 body.mc-has-shell #SITE_FOOTER_WRAPPER,
 body.mc-has-shell #SITE_FOOTER-placeholder,
 body.mc-has-shell > header:not(.mc-site-header),
-body.mc-has-shell > footer:not(.mc-site-footer),
+body.mc-has-shell footer:not(.mc-site-footer),
 body.mc-has-shell [id$="-pinned-layer"] {
   display: none !important;
 }
@@ -325,12 +325,21 @@ body.site-menu-open .mc-menu-toggle span::after {
   background-size: cover;
 }
 
+#comp-mqak9pft.mc-learn-about-section #bgLayers_comp-mqak9pft {
+  display: none !important;
+}
+
 #comp-mqak9pft.mc-learn-about-section #bgMedia_comp-mqak9pft {
   display: none !important;
 }
 
 #comp-mqak9pft.mc-learn-about-section .comp-mqak9pg94 {
   box-shadow: 0 22px 70px rgba(0, 0, 0, 0.36);
+}
+
+.mc-footer .mc-brand {
+  display: flex;
+  margin-bottom: 16px;
 }
 
 .wixui-button,

@@ -20,7 +20,10 @@
 
   function toLocalPath(pathFromRoot) {
     if (isInPages()) {
-      return pathFromRoot.replace(/^pages\//, "");
+      if (pathFromRoot.indexOf("pages/") === 0) {
+        return pathFromRoot.replace(/^pages\//, "");
+      }
+      return "../" + pathFromRoot;
     }
     return pathFromRoot;
   }
@@ -85,7 +88,7 @@
     footer.className = "mc-site-footer mc-footer";
     footer.innerHTML = [
       '<div class="mc-footer-grid">',
-      '<section><h2>myComputerEngr</h2><p>Premium computer repair and supply services in Nigeria.</p></section>',
+      '<section><a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="myComputerEngr home">' + iconMarkup() + '<span>myComputer<span class="mc-accent">Engr</span></span></a><p>Premium computer repair and supply services in Nigeria.</p></section>',
       '<section><h3>Quick Link</h3><ul>',
       '<li><a href="' + toLocalPath("index.html") + '">Home</a></li>',
       '<li><a href="' + toLocalPath("pages/about-me.html") + '">About Me</a></li>',
