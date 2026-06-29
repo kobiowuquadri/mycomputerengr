@@ -107,7 +107,7 @@
       '<a href="https://x.com/myComputerENGR" target="_blank" rel="noreferrer noopener" aria-label="X"><img src="' + assetPath("images/x.svg") + '" alt=""></a>',
       "</div></section>",
       "</div>",
-      '<div class="mc-footer-bottom">&copy; 2026 by myComputerEngr. Designed by <span class="mc-accent">Expertbalo</span></div>'
+      '<div class="mc-footer-bottom">&copy; 2026 by myComputerEngr. Designed by <a href="https://devquat.xyz" target="_blank" rel="noreferrer noopener" class="mc-accent">DevQuat</a></div>'
     ].join("");
     document.body.appendChild(footer);
   }
@@ -176,7 +176,7 @@
   }
 
   function setupButtonFallbacks() {
-    document.querySelectorAll("button").forEach(function (button) {
+    document.querySelectorAll("button, [role='button']").forEach(function (button) {
       var label = textOf(button).toLowerCase();
       if (label === "book a repair") {
         button.addEventListener("click", function (event) {
@@ -185,6 +185,12 @@
           }
           event.preventDefault();
           window.location.href = toLocalPath("pages/contact-me.html");
+        });
+        button.addEventListener("keydown", function (event) {
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            window.location.href = toLocalPath("pages/contact-me.html");
+          }
         });
       }
       if (label === "send" && !button.closest("form")) {
