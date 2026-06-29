@@ -1,8 +1,13 @@
 (function () {
   var recipient = "Adedayoandadetunji@gmail.com";
 
-  function valueByLabel(form, label) {
-    var field = form.querySelector('[aria-label="' + label + '"]');
+  function value(form, selector) {
+    var field = form.querySelector(selector);
+    return field && field.value ? field.value.trim() : "";
+  }
+
+  function checkedValue(form, selector) {
+    var field = form.querySelector(selector + ":checked");
     return field && field.value ? field.value.trim() : "";
   }
 
@@ -11,19 +16,20 @@
       return;
     }
 
-    var firstName = valueByLabel(form, "First name");
-    var email = valueByLabel(form, "Email");
-    var message = valueByLabel(form, "Issue Description") || valueByLabel(form, "Message");
-    var deviceButton = form.querySelector('[aria-label="Device Type"]');
-    var deviceType = deviceButton ? deviceButton.textContent.replace(/\s+/g, " ").trim() : "";
+    var firstName = value(form, '[name="first_name"], [aria-label="First name"]');
+    var email = value(form, '[name="email"], [aria-label="Email"]');
+    var serviceType = checkedValue(form, '[name="service_type"]') || "Not specified";
+    var deviceType = value(form, '[name="device_type"], [aria-label="Device Type"]') || "Not specified";
+    var message = value(form, '[name="message"], [aria-label="Issue Description"], [aria-label="Message"]');
 
-    var subject = "New website message from " + (firstName || "myComputerEngr visitor");
+    var subject = "New repair request from " + (firstName || "myComputerEngr visitor");
     var body = [
       "Name: " + (firstName || "Not provided"),
       "Email: " + email,
-      "Device Type: " + (deviceType && deviceType !== "Device Type" ? deviceType : "Not specified"),
+      "Service Type: " + serviceType,
+      "Device Type: " + deviceType,
       "",
-      "Message:",
+      "Issue Description:",
       message
     ].join("\n");
 
@@ -42,21 +48,9 @@
     form.setAttribute("method", "post");
     form.setAttribute("enctype", "text/plain");
 
-    var submitButton = form.querySelector('[data-hook="submit-button"]');
-    if (submitButton) {
-      submitButton.setAttribute("type", "submit");
-    }
-
     form.addEventListener("submit", function (event) {
       event.preventDefault();
       submitByMail(form);
     });
-
-    if (submitButton) {
-      submitButton.addEventListener("click", function (event) {
-        event.preventDefault();
-        submitByMail(form);
-      });
-    }
   });
 }());
