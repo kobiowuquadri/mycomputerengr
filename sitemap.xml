@@ -1,9 +1,28 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>http://localhost:3000/</loc></url>
-  <url><loc>http://localhost:3000/pages/about-me.html</loc></url>
-  <url><loc>http://localhost:3000/pages/services.html</loc></url>
-  <url><loc>http://localhost:3000/pages/portfolio.html</loc></url>
-  <url><loc>http://localhost:3000/pages/contact-me.html</loc></url>
-  <url><loc>http://localhost:3000/pages/blank.html</loc></url>
+  <url>
+    <loc>https://mycomputerengr.ng/</loc>
+    <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://mycomputerengr.ng/pages/about-me.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mycomputerengr.ng/pages/services.html</loc>
+    <priority>0.9</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://mycomputerengr.ng/pages/portfolio.html</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://mycomputerengr.ng/pages/contact-me.html</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
 </urlset>

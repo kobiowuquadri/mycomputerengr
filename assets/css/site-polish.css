@@ -385,6 +385,22 @@ wow-image img,
   object-fit: cover;
 }
 
+
+/* ── portfolio page hero background ── */
+#comp-mqijsix6 {
+  background-image: linear-gradient(rgba(8, 17, 31, 0.68), rgba(8, 17, 31, 0.78)), url("../images/macbook-repair-closeup.jpg") !important;
+  background-position: center !important;
+  background-size: cover !important;
+}
+
+#comp-mqijsix6 #bgLayers_comp-mqijsix6 {
+  display: none !important;
+}
+
+#comp-mqijsix6 #bgMedia_comp-mqijsix6 {
+  display: none !important;
+}
+
 .mc-contact-body {
   min-width: 0;
 }
