@@ -1,5 +1,5 @@
 (function () {
-  var recipient = "Adedayoandadetunji@gmail.com";
+  var recipient = "support@mycomputerengr.ng";
 
   function value(form, selector) {
     var field = form.querySelector(selector);

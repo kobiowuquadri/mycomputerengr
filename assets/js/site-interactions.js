@@ -1,7 +1,7 @@
 (function () {
   var navItems = [
     { label: "Home", path: "index.html" },
-    { label: "About Me", path: "pages/about-me.html" },
+    { label: "About Us", path: "pages/about-me.html" },
     { label: "Services", path: "pages/services.html" },
     { label: "Portfolio", path: "pages/portfolio.html" }
   ];
@@ -88,18 +88,18 @@
     footer.className = "mc-site-footer mc-footer";
     footer.innerHTML = [
       '<div class="mc-footer-grid">',
-      '<section><a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="myComputerEngr home">' + iconMarkup() + '<span>myComputer<span class="mc-accent">Engr</span></span></a><p>Premium computer repair and supply services in Nigeria.</p></section>',
+      '<section><a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="myComputerEngr home">' + iconMarkup() + '<span>myComputer<span class="mc-accent">Engr</span></span></a><p>B2B on-site computer and smartphone repair for businesses across Lagos, Nigeria.</p></section>',
       '<section><h3>Quick Link</h3><ul>',
       '<li><a href="' + toLocalPath("index.html") + '">Home</a></li>',
-      '<li><a href="' + toLocalPath("pages/about-me.html") + '">About Me</a></li>',
+      '<li><a href="' + toLocalPath("pages/about-me.html") + '">About Us</a></li>',
       '<li><a href="' + toLocalPath("pages/services.html") + '">Services</a></li>',
       '<li><a href="' + toLocalPath("pages/portfolio.html") + '">Portfolio</a></li>',
       '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a></li>',
       "</ul></section>",
       '<section><h3>Visit Us</h3><ul>',
       "<li>myComputerENGR</li>",
-      "<li>Akala Express, New Garage Ibadan, Nigeria</li>",
-      '<li><a href="mailto:Adedayoandadetunji@gmail.com">Adedayoandadetunji@gmail.com</a></li>',
+      "<li>No 4 Olu Aina Street, Mushin, Lagos, Nigeria</li>",
+      '<li><a href="mailto:support@mycomputerengr.ng">support@mycomputerengr.ng</a></li>',
       '<li><a href="tel:09031832073">09031832073</a></li>',
       "</ul></section>",
       '<section><h3>Social</h3><div class="mc-socials">',
@@ -218,6 +218,46 @@
     });
   }
 
+  function setupHeroSection() {
+    if (currentPathName() !== "index.html") { return; }
+    var wixHero = document.getElementById("comp-mq99jgh1");
+    if (wixHero) {
+      wixHero.style.display = "none";
+    }
+
+    var hero = document.createElement("section");
+    hero.className = "mc-hero-section";
+    hero.setAttribute("aria-label", "Hero");
+    hero.innerHTML = [
+      '<div class="mc-hero-inner">',
+      '<div class="mc-hero-content">',
+      '<p class="mc-hero-eyebrow">B2B Device Repair &mdash; Lagos, Nigeria</p>',
+      '<h1 class="mc-hero-heading">',
+      'Your PC &amp; Smartphone<br>',
+      '<span>Downtime Ends Here.</span>',
+      '</h1>',
+      '<p class="mc-hero-body">On-site device repair built exclusively for businesses and enterprises. Your team stays productive. Your data stays protected.</p>',
+      '<p class="mc-hero-sub">We serve fintechs, startups, and SMEs across Lagos Island, Lekki, and Mainland &mdash; fixing computers and smartphones at your office, on your schedule.</p>',
+      '<div class="mc-hero-actions">',
+      '<a class="mc-repair-btn" href="' + toLocalPath("pages/services.html") + '">Explore Our Services</a>',
+      '</div>',
+      '<ul class="mc-hero-trust">',
+      '<li>On-site visits only</li>',
+      '<li>30-min WhatsApp response</li>',
+      '<li>Data-safe technicians</li>',
+      '</ul>',
+      '</div>',
+      '</div>'
+    ].join("");
+
+    var header = document.querySelector(".mc-site-header");
+    if (header && header.parentNode) {
+      header.parentNode.insertBefore(hero, header.nextSibling);
+    } else {
+      document.body.insertBefore(hero, document.body.firstChild);
+    }
+  }
+
   function setupLearnAboutBackground() {
     var section = document.getElementById("comp-mqak9pft");
     if (section) {
@@ -259,9 +299,113 @@
     });
   }
 
+  function runScroller(track, speed) {
+    var offset = 0;
+    var half = 0;
+    var raf;
+
+    function tick() {
+      offset += speed;
+      if (offset >= half) { offset = 0; }
+      track.style.transform = 'translateX(-' + offset + 'px)';
+      raf = requestAnimationFrame(tick);
+    }
+
+    requestAnimationFrame(function () {
+      half = track.scrollWidth / 2;
+      tick();
+    });
+  }
+
+  function setupPartnerMarquee() {
+    var section = document.getElementById('comp-mqaur1nk');
+    if (!section) { return; }
+    section.style.display = 'none';
+
+    var items = [
+      'HP EXPERT', 'DELL SERVICE', 'LENOVO UPGRADES', 'APPLE AUTHORIZED',
+      'MACBOOK REPAIR', 'DATA RECOVERY', 'MICROSOFT SUPPORT', 'SAMSUNG REPAIR',
+      'ENTERPRISE IT', 'CISCO NETWORKING'
+    ];
+
+    function buildItems() {
+      return items.map(function (t) {
+        return '<span class="xq-badge">' + t + '<span class="xq-dot"></span></span>';
+      }).join('');
+    }
+
+    var el = document.createElement('div');
+    el.className = 'xq-ticker';
+    el.innerHTML =
+      '<div class="xq-ticker-fade xq-ticker-fade--l"></div>' +
+      '<div class="xq-ticker-fade xq-ticker-fade--r"></div>' +
+      '<div class="xq-ticker-track">' + buildItems() + buildItems() + '</div>';
+
+    section.insertAdjacentElement('beforebegin', el);
+    runScroller(el.querySelector('.xq-ticker-track'), 0.6);
+  }
+
+  function setupTestimonialsMarquee() {
+    var section = document.getElementById('comp-mqaudlkd');
+    if (!section) { return; }
+    section.style.display = 'none';
+
+    var cards = [
+      { quote: 'They came to our office and fixed 5 company laptops on the same day. Exceptional service — zero disruption to our team.', name: 'Chioma O.', role: 'Operations Manager' },
+      { quote: 'Fast WhatsApp response and a technician at our office within the hour. myComputerENGR runs like a professional IT department.', name: 'Adeyemi', role: 'IT Lead' },
+      { quote: 'We outsource all device maintenance to myComputerENGR. Transparent pricing, always on-site, always reliable.', name: 'Tunde A.', role: 'CEO' },
+      { quote: 'From our CEO’s MacBook to staff iPhones — myComputerENGR handles everything on-site. Data-safe and completely discreet.', name: 'Adekunle B.', role: 'CTO' },
+      { quote: 'Best enterprise IT support we’ve had. Quick diagnosis, honest pricing, and they always show up on time.', name: 'Funke A.', role: 'Office Manager' },
+      { quote: 'Our team of 20 relies on myComputerENGR for all hardware issues. They have never let us down. Highly recommended.', name: 'Emeka O.', role: 'Head of Engineering' }
+    ];
+
+    function stars() {
+      return '<div class="xq-stars"><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span></div>';
+    }
+
+    function buildCards() {
+      return cards.map(function (d) {
+        return '<div class="xq-card">' +
+          stars() +
+          '<p class="xq-card-quote">' + d.quote + '</p>' +
+          '<div class="xq-card-footer">' +
+            '<div class="xq-avatar">' + d.name.charAt(0) + '</div>' +
+            '<div>' +
+              '<p class="xq-card-name">' + d.name + '</p>' +
+              '<p class="xq-card-role">' + d.role + ', Lagos</p>' +
+            '</div>' +
+          '</div>' +
+        '</div>';
+      }).join('');
+    }
+
+    var wrapper = document.createElement('section');
+    wrapper.className = 'xq-reviews';
+    wrapper.innerHTML =
+      '<div class="xq-reviews-head">' +
+        '<p class="xq-reviews-label">CLIENT REVIEWS</p>' +
+        '<h2 class="xq-reviews-title">What Our Customers Say</h2>' +
+      '</div>' +
+      '<div class="xq-reviews-viewport">' +
+        '<div class="xq-fade xq-fade--l"></div>' +
+        '<div class="xq-fade xq-fade--r"></div>' +
+        '<div class="xq-cards-track">' + buildCards() + buildCards() + '</div>' +
+      '</div>';
+
+    var footer = document.querySelector('.mc-site-footer');
+    if (footer) {
+      footer.insertAdjacentElement('beforebegin', wrapper);
+    } else {
+      document.body.appendChild(wrapper);
+    }
+    runScroller(wrapper.querySelector('.xq-cards-track'), 0.4);
+  }
+
+
   ready(function () {
     document.documentElement.classList.add("site-js");
     setupShell();
+    setupHeroSection();
     setupImages();
     setupLearnAboutBackground();
     setupMobileMenu();
@@ -269,5 +413,7 @@
     setupButtonFallbacks();
     setupSmoothAnchors();
     setupRevealAnimations();
+    setupPartnerMarquee();
+    setupTestimonialsMarquee();
   });
 }());
