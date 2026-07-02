@@ -2,8 +2,7 @@
   var navItems = [
     { label: "Home", path: "index.html" },
     { label: "About Us", path: "pages/about-me.html" },
-    { label: "Services", path: "pages/services.html" },
-    { label: "Portfolio", path: "pages/portfolio.html" }
+    { label: "Services", path: "pages/services.html" }
   ];
 
   function ready(callback) {
@@ -93,7 +92,6 @@
       '<li><a href="' + toLocalPath("index.html") + '">Home</a></li>',
       '<li><a href="' + toLocalPath("pages/about-me.html") + '">About Us</a></li>',
       '<li><a href="' + toLocalPath("pages/services.html") + '">Services</a></li>',
-      '<li><a href="' + toLocalPath("pages/portfolio.html") + '">Portfolio</a></li>',
       '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a></li>',
       "</ul></section>",
       '<section><h3>Visit Us</h3><ul>',
@@ -402,6 +400,17 @@
   }
 
 
+  function setupWhatsApp() {
+    var btn = document.createElement('a');
+    btn.className = 'mc-wa-fab';
+    btn.href = 'https://wa.me/2349031832073';
+    btn.target = '_blank';
+    btn.rel = 'noreferrer noopener';
+    btn.setAttribute('aria-label', 'Chat with us on WhatsApp');
+    btn.innerHTML = '<svg viewBox="0 0 32 32" aria-hidden="true" focusable="false"><path fill="#fff" d="M16 2C8.268 2 2 8.268 2 16c0 2.478.648 4.804 1.781 6.822L2 30l7.389-1.742A13.93 13.93 0 0 0 16 30c7.732 0 14-6.268 14-14S23.732 2 16 2zm0 25.5a11.43 11.43 0 0 1-5.826-1.594l-.418-.249-4.385 1.034 1.057-4.272-.273-.438A11.451 11.451 0 0 1 4.5 16C4.5 9.649 9.649 4.5 16 4.5S27.5 9.649 27.5 16 22.351 27.5 16 27.5zm6.27-8.453c-.344-.172-2.035-1.004-2.35-1.118-.316-.115-.546-.172-.775.172-.229.344-.887 1.118-1.087 1.348-.2.229-.401.258-.745.086-.344-.172-1.453-.536-2.768-1.707-1.023-.912-1.713-2.039-1.913-2.383-.2-.344-.021-.53.15-.701.155-.154.344-.401.516-.602.172-.2.229-.344.344-.573.115-.229.057-.43-.029-.602-.086-.172-.775-1.87-1.062-2.562-.28-.674-.563-.582-.775-.593l-.659-.011c-.229 0-.602.086-.917.43-.316.344-1.203 1.175-1.203 2.864s1.232 3.322 1.404 3.551c.172.229 2.426 3.705 5.879 5.194.822.355 1.463.567 1.963.727.824.263 1.574.226 2.167.137.66-.099 2.035-.832 2.322-1.635.287-.803.287-1.49.2-1.635-.086-.143-.315-.229-.659-.401z"/></svg>';
+    document.body.appendChild(btn);
+  }
+
   ready(function () {
     document.documentElement.classList.add("site-js");
     setupShell();
@@ -415,5 +424,6 @@
     setupRevealAnimations();
     setupPartnerMarquee();
     setupTestimonialsMarquee();
+    setupWhatsApp();
   });
 }());
