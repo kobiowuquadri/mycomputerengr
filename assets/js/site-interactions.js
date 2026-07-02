@@ -240,7 +240,7 @@
       '<a class="mc-repair-btn" href="' + toLocalPath("pages/contact-me.html") + '">Talk to an Engineer</a>',
       '</div>',
       '<ul class="mc-hero-trust">',
-      '<li>On-site visits only</li>',
+      '<li>On-site visits</li>',
       '<li>30-min WhatsApp response</li>',
       '<li>Data-safe technicians</li>',
       '</ul>',
