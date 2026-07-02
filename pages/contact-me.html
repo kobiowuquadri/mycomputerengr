@@ -45,18 +45,17 @@
           <label><input type="radio" name="service_type" value="On-Site Repair (Secondary Location / Warehouse)"> <span>On-Site Repair (Secondary Location / Warehouse)</span></label>
         </fieldset>
 
-        <label for="device-type">Device Type</label>
-        <select id="device-type" name="device_type" aria-label="Device Type" required>
-          <option value="">Select a device</option>
-          <option>Laptop</option>
-          <option>Desktop computer</option>
-          <option>MacBook</option>
-          <option>Printer</option>
-          <option>Phone or tablet</option>
-          <option>Data recovery</option>
-          <option>On-site repair visit</option>
-          <option>Other</option>
-        </select>
+        <fieldset class="mc-checkbox-group">
+          <legend>Device Type <span class="mc-hint">(select all that apply)</span></legend>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Laptop"> <span>Laptop</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Desktop computer"> <span>Desktop computer</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="MacBook"> <span>MacBook</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Printer"> <span>Printer</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Phone or tablet"> <span>Phone or tablet</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Server"> <span>Server</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Network device"> <span>Network device</span></label>
+          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Other"> <span>Other</span></label>
+        </fieldset>
 
         <label for="message">Issue Description *</label>
         <textarea id="message" name="message" aria-label="Issue Description" rows="6" required></textarea>
@@ -93,7 +92,7 @@
             <span aria-hidden="true">^</span>
           </button>
           <div id="faq-1" class="mc-faq-answer">
-            <p>Most repairs are completed the same day or within 24-48 hours. Screen replacements usually take 2-4 hours. We'll give you a timeline during the diagnosis.</p>
+            <p>Most repairs are completed the same day or within 24-48 hours. Screen replacements usually take 2-4 hours. We will give you a timeline during the diagnosis.</p>
           </div>
         </article>
         <article class="mc-faq-item">

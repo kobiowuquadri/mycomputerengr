@@ -353,7 +353,7 @@
       { quote: 'Fast WhatsApp response and a technician at our office within the hour. myComputerENGR runs like a professional IT department.', name: 'Adeyemi', role: 'IT Lead' },
       { quote: 'We outsource all device maintenance to myComputerENGR. Transparent pricing, always on-site, always reliable.', name: 'Tunde A.', role: 'CEO' },
       { quote: 'From our CEO’s MacBook to staff iPhones — myComputerENGR handles everything on-site. Data-safe and completely discreet.', name: 'Adekunle B.', role: 'CTO' },
-      { quote: 'Best enterprise IT support we’ve had. Quick diagnosis, honest pricing, and they always show up on time.', name: 'Funke A.', role: 'Office Manager' },
+      { quote: 'Best enterprise IT support we have had. Quick diagnosis, honest pricing, and they always show up on time.', name: 'Funke A.', role: 'Office Manager' },
       { quote: 'Our team of 20 relies on myComputerENGR for all hardware issues. They have never let us down. Highly recommended.', name: 'Emeka O.', role: 'Head of Engineering' }
     ];
 

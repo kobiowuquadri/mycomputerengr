@@ -595,6 +595,49 @@ wow-image img,
   accent-color: var(--mc-cyan);
 }
 
+.mc-checkbox-group {
+  margin: 0 0 20px;
+  padding: 0;
+  border: 0;
+}
+
+.mc-checkbox-group legend {
+  font-size: 14px;
+  color: var(--mc-text);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.mc-checkbox-group legend.mc-field-error {
+  color: #ff6b6b;
+}
+
+.mc-hint {
+  font-size: 12px;
+  color: #5a7a9a;
+  font-weight: 400;
+}
+
+.mc-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  color: var(--mc-text);
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.mc-checkbox-label input[type="checkbox"] {
+  width: 16px;
+  min-height: 16px;
+  height: 16px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--mc-cyan);
+  cursor: pointer;
+}
+
 .mc-submit {
   width: min(330px, 100%);
   margin-left: auto;

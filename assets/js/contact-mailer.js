@@ -11,7 +11,19 @@
     return field && field.value ? field.value.trim() : "";
   }
 
+  function checkedValues(form, selector) {
+    var fields = form.querySelectorAll(selector + ":checked");
+    if (!fields.length) { return "Not specified"; }
+    return Array.prototype.map.call(fields, function (f) { return f.value; }).join(", ");
+  }
+
   function submitByMail(form) {
+    var deviceBoxes = form.querySelectorAll('[name="device_type"]:checked');
+    if (!deviceBoxes.length) {
+      var legend = form.querySelector('.mc-checkbox-group legend');
+      if (legend) { legend.classList.add('mc-field-error'); }
+      return;
+    }
     if (!form.reportValidity()) {
       return;
     }
@@ -19,7 +31,7 @@
     var firstName = value(form, '[name="first_name"], [aria-label="First name"]');
     var email = value(form, '[name="email"], [aria-label="Email"]');
     var serviceType = checkedValue(form, '[name="service_type"]') || "Not specified";
-    var deviceType = value(form, '[name="device_type"], [aria-label="Device Type"]') || "Not specified";
+    var deviceType = checkedValues(form, '[name="device_type"]');
     var message = value(form, '[name="message"], [aria-label="Issue Description"], [aria-label="Message"]');
 
     var subject = "New repair request from " + (firstName || "myComputerEngr visitor");
