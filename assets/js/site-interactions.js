@@ -232,12 +232,12 @@
       '<p class="mc-hero-eyebrow">B2B Device Repair &mdash; Lagos, Nigeria</p>',
       '<h1 class="mc-hero-heading">',
       'Your PC &amp; Smartphone<br>',
-      '<span>Downtime Ends Here.</span>',
+      '<span>Downtime Ends Here!</span>',
       '</h1>',
-      '<p class="mc-hero-body">On-site device repair built exclusively for businesses and enterprises. Your team stays productive. Your data stays protected.</p>',
-      '<p class="mc-hero-sub">We serve fintechs, startups, and SMEs across Lagos Island, Lekki, and Mainland &mdash; fixing computers and smartphones at your office, on your schedule.</p>',
+      '<p class="mc-hero-body">Minimise business technology downtime with our fast on-site support for Apple laptops, desktops, and smartphones, built exclusively for businesses and enterprises. Your team stays productive. Your data stays protected.</p>',
+      '<p class="mc-hero-sub">We serve fintechs, startups, NGOs, Schools, Healthcare, Professional Services, Manufacturers, Churches, and SMEs across Lagos and Nigeria &mdash; fixing devices at your office, on your schedule.</p>',
       '<div class="mc-hero-actions">',
-      '<a class="mc-repair-btn" href="' + toLocalPath("pages/services.html") + '">Explore Our Services</a>',
+      '<a class="mc-repair-btn" href="' + toLocalPath("pages/contact-me.html") + '">Talk to an Engineer</a>',
       '</div>',
       '<ul class="mc-hero-trust">',
       '<li>On-site visits only</li>',
@@ -400,6 +400,25 @@
   }
 
 
+  function setupWhyChooseExtra() {
+    var section = document.getElementById('comp-mqateoo3');
+    if (!section) { return; }
+
+    var extra = document.createElement('div');
+    extra.className = 'mc-why-extra';
+    extra.innerHTML =
+      '<div class="mc-why-card">' +
+        '<h3>Fast Response</h3>' +
+        '<p>Prompt diagnostics and timely service to keep your business operating smoothly.</p>' +
+      '</div>' +
+      '<div class="mc-why-card">' +
+        '<h3>Business-first Support</h3>' +
+        '<p>Technology support tailored to the needs of organisations, helping your people stay productive.</p>' +
+      '</div>';
+
+    section.appendChild(extra);
+  }
+
   function setupWhatsApp() {
     var btn = document.createElement('a');
     btn.className = 'mc-wa-fab';
@@ -424,6 +443,7 @@
     setupRevealAnimations();
     setupPartnerMarquee();
     setupTestimonialsMarquee();
+    setupWhyChooseExtra();
     setupWhatsApp();
   });
 }());

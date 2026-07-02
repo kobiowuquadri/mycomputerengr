@@ -1098,6 +1098,246 @@ wow-image img,
   .xq-reviews-title { font-size: 24px; }
 }
 
+/* ── Services page ─────────────────────────────────────────── */
+.mc-services-page {
+  padding-bottom: 0;
+}
+
+.mc-services-hero {
+  position: relative;
+  background-size: cover;
+  background-position: center 30%;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid rgba(0,229,255,0.08);
+  padding: 96px 0 80px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.mc-services-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(4,9,22,0.88) 40%, rgba(6,18,36,0.82) 100%);
+}
+
+.mc-services-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.mc-services-eyebrow {
+  font: 700 11px/1 "Inter", sans-serif;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #00e5ff;
+  margin: 0 0 16px;
+}
+
+.mc-services-hero h1 {
+  font: 700 42px/1.15 "Inter", sans-serif;
+  color: #dce8ff;
+  margin: 0 0 18px;
+}
+
+.mc-services-hero p {
+  font: 400 16px/1.65 "Inter", sans-serif;
+  color: #7a9ab8;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.mc-svc-grid-section {
+  padding: 72px 24px 56px;
+}
+
+.mc-svc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+
+.mc-svc-card {
+  background: #0c1830;
+  border: 1px solid rgba(0,229,255,0.12);
+  border-radius: 14px;
+  padding: 30px 26px 28px;
+  transition: border-color 0.2s, transform 0.2s;
+}
+
+.mc-svc-card:hover {
+  border-color: rgba(0,229,255,0.3);
+  transform: translateY(-3px);
+}
+
+.mc-svc-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 18px;
+}
+
+.mc-svc-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.mc-svc-card h2 {
+  font: 600 17px/1.3 "Inter", sans-serif;
+  color: #dce8ff;
+  margin: 0 0 10px;
+}
+
+.mc-svc-card p {
+  font: 400 14px/1.65 "Inter", sans-serif;
+  color: #7a9ab8;
+  margin: 0;
+}
+
+.mc-svc-photo-break {
+  width: 100%;
+  max-height: 420px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mc-svc-photo-break::before,
+.mc-svc-photo-break::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 80px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.mc-svc-photo-break::before {
+  top: 0;
+  background: linear-gradient(to bottom, #060c18, transparent);
+}
+
+.mc-svc-photo-break::after {
+  bottom: 0;
+  background: linear-gradient(to top, #060c18, transparent);
+}
+
+.mc-svc-photo-break img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  object-position: center 40%;
+  display: block;
+}
+
+.mc-svc-detail-section {
+  padding: 0 24px 72px;
+}
+
+.mc-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.mc-detail-card {
+  background: #07111f;
+  border: 1px solid rgba(0,229,255,0.1);
+  border-top: 3px solid #00e5ff;
+  border-radius: 0 0 12px 12px;
+  padding: 28px 26px 30px;
+}
+
+.mc-detail-num {
+  font: 700 11px/1 "Inter", sans-serif;
+  letter-spacing: 0.1em;
+  color: #00e5ff;
+  margin-bottom: 12px;
+}
+
+.mc-detail-card h2 {
+  font: 600 18px/1.3 "Inter", sans-serif;
+  color: #dce8ff;
+  margin: 0 0 10px;
+}
+
+.mc-detail-card p {
+  font: 400 14px/1.6 "Inter", sans-serif;
+  color: #7a9ab8;
+  margin: 0 0 16px;
+}
+
+.mc-detail-card ul {
+  margin: 0;
+  padding: 0 0 0 18px;
+}
+
+.mc-detail-card li {
+  font: 400 14px/1.7 "Inter", sans-serif;
+  color: #a0bcd4;
+  margin-bottom: 4px;
+}
+
+.mc-services-cta {
+  background: linear-gradient(135deg, #071525, #0a1e38);
+  border-top: 1px solid rgba(0,229,255,0.1);
+  padding: 72px 24px 80px;
+  text-align: center;
+}
+
+.mc-services-cta h2 {
+  font: 700 32px/1.2 "Inter", sans-serif;
+  color: #dce8ff;
+  margin: 0 0 14px;
+}
+
+.mc-services-cta p {
+  font: 400 15px/1.65 "Inter", sans-serif;
+  color: #7a9ab8;
+  margin: 0 0 32px;
+}
+
+@media (max-width: 768px) {
+  .mc-services-hero { padding: 72px 0 60px; }
+  .mc-services-hero h1 { font-size: 30px; }
+  .mc-svc-grid-section { padding: 48px 18px 40px; }
+  .mc-svc-photo-break,
+  .mc-svc-photo-break img { max-height: 260px; height: 260px; }
+  .mc-svc-detail-section { padding: 0 18px 48px; }
+  .mc-services-cta { padding: 56px 18px 64px; }
+  .mc-services-cta h2 { font-size: 24px; }
+}
+
+/* ── Why Choose extra cards ────────────────────────────────── */
+.mc-why-extra {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+  padding: 24px 32px 32px;
+}
+
+.mc-why-card {
+  flex: 1 1 220px;
+  background: rgba(0,229,255,0.04);
+  border: 1px solid rgba(0,229,255,0.12);
+  border-radius: 12px;
+  padding: 24px 22px;
+}
+
+.mc-why-card h3 {
+  font: 600 16px/1.3 "Inter", sans-serif;
+  color: #dce8ff;
+  margin: 0 0 10px;
+}
+
+.mc-why-card p {
+  font: 400 14px/1.6 "Inter", sans-serif;
+  color: #7a9ab8;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .mc-why-extra { padding: 16px 18px 24px; }
+}
+
 /* ── WhatsApp FAB ──────────────────────────────────────────── */
 .mc-wa-fab {
   position: fixed;
