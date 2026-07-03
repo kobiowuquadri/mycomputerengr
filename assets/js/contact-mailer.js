@@ -6,42 +6,49 @@
     return field && field.value ? field.value.trim() : "";
   }
 
-  function checkedValue(form, selector) {
-    var field = form.querySelector(selector + ":checked");
-    return field && field.value ? field.value.trim() : "";
-  }
-
-  function checkedValues(form, selector) {
-    var fields = form.querySelectorAll(selector + ":checked");
-    if (!fields.length) { return "Not specified"; }
-    return Array.prototype.map.call(fields, function (f) { return f.value; }).join(", ");
+  function num(form, selector) {
+    var v = value(form, selector);
+    return v || "Not specified";
   }
 
   function submitByMail(form) {
-    var deviceBoxes = form.querySelectorAll('[name="device_type"]:checked');
-    if (!deviceBoxes.length) {
-      var legend = form.querySelector('.mc-checkbox-group legend');
-      if (legend) { legend.classList.add('mc-field-error'); }
-      return;
-    }
     if (!form.reportValidity()) {
       return;
     }
 
-    var firstName = value(form, '[name="first_name"], [aria-label="First name"]');
-    var email = value(form, '[name="email"], [aria-label="Email"]');
-    var serviceType = checkedValue(form, '[name="service_type"]') || "Not specified";
-    var deviceType = checkedValues(form, '[name="device_type"]');
-    var message = value(form, '[name="message"], [aria-label="Issue Description"], [aria-label="Message"]');
+    var companyName    = value(form, '[name="company_name"]');
+    var contactPerson  = value(form, '[name="contact_person"]');
+    var email          = value(form, '[name="email"]');
+    var phone          = value(form, '[name="phone"]');
+    var industry       = value(form, '[name="industry"]');
+    var numEmployees   = value(form, '[name="num_employees"]') || "Not specified";
+    var numLocations   = num(form, '[name="num_locations"]');
+    var numComputers   = num(form, '[name="num_computers"]');
+    var numApple       = num(form, '[name="num_apple"]');
+    var numWindows     = num(form, '[name="num_windows"]');
+    var numSmartphones = num(form, '[name="num_smartphones"]');
+    var message        = value(form, '[name="message"]');
 
-    var subject = "New repair request from " + (firstName || "myComputerEngr visitor");
+    var subject = "New business support request from " + (companyName || "a prospect");
     var body = [
-      "Name: " + (firstName || "Not provided"),
-      "Email: " + email,
-      "Service Type: " + serviceType,
-      "Device Type: " + deviceType,
+      "── CONTACT DETAILS ─────────────────────────",
+      "Company:         " + (companyName   || "Not provided"),
+      "Contact person:  " + (contactPerson || "Not provided"),
+      "Email:           " + (email         || "Not provided"),
+      "Phone:           " + (phone         || "Not provided"),
       "",
-      "Issue Description:",
+      "── BUSINESS PROFILE ─────────────────────────",
+      "Industry:        " + (industry    || "Not specified"),
+      "Employees:       " + numEmployees,
+      "Locations:       " + numLocations,
+      "",
+      "── DEVICE INVENTORY ─────────────────────────",
+      "Total computers: " + numComputers,
+      "Apple devices:   " + numApple,
+      "Windows devices: " + numWindows,
+      "Smartphones:     " + numSmartphones,
+      "",
+      "── PRIMARY ISSUE / SUPPORT NEED ─────────────",
       message
     ].join("\n");
 

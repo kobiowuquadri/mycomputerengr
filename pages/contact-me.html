@@ -34,36 +34,100 @@
 
     <section class="mc-contact-main mc-container mc-reveal">
       <form class="mc-contact-form" aria-label="Contact us" novalidate>
-        <h2>Contact Us Intake Form</h2>
+        <h2>Tell Us About Your Business</h2>
 
-        <label for="first-name">First name</label>
-        <input id="first-name" name="first_name" aria-label="First name" autocomplete="given-name" required>
+        <div class="mc-form-section">
+          <p class="mc-form-section-label">Contact Details</p>
+          <div class="mc-form-row">
+            <div>
+              <label for="company-name">Company Name *</label>
+              <input id="company-name" name="company_name" autocomplete="organization" required placeholder="e.g. Acme Ltd">
+            </div>
+            <div>
+              <label for="contact-person">Contact Person *</label>
+              <input id="contact-person" name="contact_person" autocomplete="name" required placeholder="Full name">
+            </div>
+          </div>
+          <div class="mc-form-row">
+            <div>
+              <label for="email">Email *</label>
+              <input id="email" name="email" type="email" autocomplete="email" required placeholder="work@company.com">
+            </div>
+            <div>
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="e.g. 08012345678">
+            </div>
+          </div>
+        </div>
 
-        <label for="email">Email *</label>
-        <input id="email" name="email" type="email" aria-label="Email" autocomplete="email" required>
+        <div class="mc-form-section">
+          <p class="mc-form-section-label">Business Profile</p>
+          <div class="mc-form-row">
+            <div>
+              <label for="industry">Industry *</label>
+              <select id="industry" name="industry" required>
+                <option value="" disabled selected>Select industry</option>
+                <option>Fintech / Banking</option>
+                <option>Education / School</option>
+                <option>Healthcare</option>
+                <option>Manufacturing</option>
+                <option>Professional Services</option>
+                <option>NGO / Non-profit</option>
+                <option>Church / Religious organisation</option>
+                <option>Logistics / Retail</option>
+                <option>Government / Public sector</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="num-employees">Number of Employees</label>
+              <select id="num-employees" name="num_employees">
+                <option value="" disabled selected>Select range</option>
+                <option>1 – 5</option>
+                <option>6 – 20</option>
+                <option>21 – 50</option>
+                <option>51 – 200</option>
+                <option>201 – 500</option>
+                <option>500+</option>
+              </select>
+            </div>
+          </div>
+          <div class="mc-form-row mc-form-row--single">
+            <div>
+              <label for="num-locations">Number of Locations</label>
+              <input id="num-locations" name="num_locations" type="number" min="1" placeholder="e.g. 2">
+            </div>
+          </div>
+        </div>
 
-        <fieldset class="mc-radio-group">
-          <legend>Service Type Required</legend>
-          <label><input type="radio" name="service_type" value="On-Site Office Repair (We Come to You)" required> <span>On-Site Office Repair (We Come to You)</span></label>
-          <label><input type="radio" name="service_type" value="On-Site Repair (Secondary Location / Warehouse)"> <span>On-Site Repair (Secondary Location / Warehouse)</span></label>
-        </fieldset>
+        <div class="mc-form-section">
+          <p class="mc-form-section-label">Device Inventory <span class="mc-hint">(approximate)</span></p>
+          <div class="mc-form-row">
+            <div>
+              <label for="num-computers">Total Computers</label>
+              <input id="num-computers" name="num_computers" type="number" min="0" placeholder="e.g. 15">
+            </div>
+            <div>
+              <label for="num-apple">Apple Devices</label>
+              <input id="num-apple" name="num_apple" type="number" min="0" placeholder="e.g. 5">
+            </div>
+          </div>
+          <div class="mc-form-row">
+            <div>
+              <label for="num-windows">Windows Devices</label>
+              <input id="num-windows" name="num_windows" type="number" min="0" placeholder="e.g. 10">
+            </div>
+            <div>
+              <label for="num-smartphones">Smartphones</label>
+              <input id="num-smartphones" name="num_smartphones" type="number" min="0" placeholder="e.g. 20">
+            </div>
+          </div>
+        </div>
 
-        <fieldset class="mc-checkbox-group">
-          <legend>Device Type <span class="mc-hint">(select all that apply)</span></legend>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Laptop"> <span>Laptop</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Desktop computer"> <span>Desktop computer</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="MacBook"> <span>MacBook</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Printer"> <span>Printer</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Phone or tablet"> <span>Phone or tablet</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Server"> <span>Server</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Network device"> <span>Network device</span></label>
-          <label class="mc-checkbox-label"><input type="checkbox" name="device_type" value="Other"> <span>Other</span></label>
-        </fieldset>
+        <label for="message">Primary Issue or Support Need *</label>
+        <textarea id="message" name="message" aria-label="Issue Description" rows="5" required placeholder="Describe the main problem or what kind of support your organisation needs."></textarea>
 
-        <label for="message">Issue Description *</label>
-        <textarea id="message" name="message" aria-label="Issue Description" rows="6" required></textarea>
-
-        <button class="mc-submit" data-hook="submit-button" type="submit">Submit</button>
+        <button class="mc-submit" data-hook="submit-button" type="submit">Send Request</button>
       </form>
 
       <aside class="mc-business-info">

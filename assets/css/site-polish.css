@@ -649,6 +649,47 @@ wow-image img,
   color: var(--mc-cyan);
 }
 
+.mc-form-section {
+  margin-bottom: 8px;
+}
+
+.mc-form-section-label {
+  font: 700 11px/1 "Wix Madefor Text", sans-serif;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mc-cyan);
+  margin: 0 0 16px;
+}
+
+.mc-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 20px;
+}
+
+.mc-form-row--single {
+  grid-template-columns: 1fr;
+  max-width: calc(50% - 10px);
+}
+
+.mc-contact-form select:invalid {
+  color: #5a7a9a;
+}
+
+.mc-contact-form input::placeholder,
+.mc-contact-form textarea::placeholder {
+  color: #3d5570;
+}
+
+.mc-contact-form input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+.mc-contact-form input[type="number"]::-webkit-inner-spin-button,
+.mc-contact-form input[type="number"]::-webkit-outer-spin-button {
+  opacity: 0.5;
+}
+
 .mc-business-info {
   padding-top: 2px;
 }
@@ -887,6 +928,12 @@ wow-image img,
 
   .mc-contact-main {
     padding-bottom: 52px;
+  }
+
+  .mc-form-row,
+  .mc-form-row--single {
+    grid-template-columns: 1fr;
+    max-width: none;
   }
 
   .mc-submit {
