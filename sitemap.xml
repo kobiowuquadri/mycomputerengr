@@ -16,6 +16,21 @@
     <changefreq>monthly</changefreq>
   </url>
   <url>
+    <loc>https://mycomputerengr.ng/pages/blog.html</loc>
+    <priority>0.7</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://mycomputerengr.ng/pages/single-blog.html</loc>
+    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
+    <loc>https://mycomputerengr.ng/executive-support/</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
     <loc>https://mycomputerengr.ng/pages/portfolio.html</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>

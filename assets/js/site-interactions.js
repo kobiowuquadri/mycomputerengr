@@ -2,7 +2,8 @@
   var navItems = [
     { label: "Home", path: "index.html" },
     { label: "About Us", path: "pages/about-me.html" },
-    { label: "Services", path: "pages/services.html" }
+    { label: "Services", path: "pages/services.html" },
+    { label: "Blog", path: "pages/blog.html" }
   ];
 
   function ready(callback) {
@@ -13,27 +14,42 @@
     }
   }
 
-  function isInPages() {
-    return window.location.pathname.indexOf("/pages/") !== -1;
+  function pageDepth() {
+    var pathname = window.location.pathname.replace(/\/+$/, "");
+    var parts = pathname.split("/").filter(Boolean);
+    if (!parts.length) {
+      return 0;
+    }
+    var last = parts[parts.length - 1];
+    return last.indexOf(".") !== -1 ? parts.length - 1 : parts.length;
+  }
+
+  function rootPrefix() {
+    var depth = pageDepth();
+    return depth ? new Array(depth + 1).join("../") : "";
   }
 
   function toLocalPath(pathFromRoot) {
-    if (isInPages()) {
-      if (pathFromRoot.indexOf("pages/") === 0) {
-        return pathFromRoot.replace(/^pages\//, "");
-      }
-      return "../" + pathFromRoot;
-    }
-    return pathFromRoot;
+    return rootPrefix() + pathFromRoot;
   }
 
   function assetPath(pathFromAssets) {
-    return (isInPages() ? "../assets/" : "assets/") + pathFromAssets;
+    return rootPrefix() + "assets/" + pathFromAssets;
   }
 
   function currentPathName() {
-    var name = window.location.pathname.split("/").pop() || "index.html";
-    return name.toLowerCase();
+    var pathname = window.location.pathname.replace(/\/+$/, "");
+    var parts = pathname.split("/").filter(Boolean);
+    if (!parts.length) {
+      return "index.html";
+    }
+    return parts[parts.length - 1].toLowerCase();
+  }
+
+  function isHomePage() {
+    var pathname = window.location.pathname.replace(/\/+$/, "");
+    var parts = pathname.split("/").filter(Boolean);
+    return parts.length === 0 || (parts.length === 1 && parts[0].toLowerCase() === "index.html");
   }
 
   function iconMarkup() {
@@ -52,7 +68,7 @@
     return navItems.map(function (item) {
       var href = toLocalPath(item.path);
       var itemName = item.path.split("/").pop().toLowerCase();
-      var aria = active === itemName || (active === "" && itemName === "index.html") ? ' aria-current="page"' : "";
+      var aria = (itemName === "index.html" ? isHomePage() : active === itemName) ? ' aria-current="page"' : "";
       return '<a href="' + href + '"' + aria + ">" + item.label + "</a>";
     }).join("") + '<a class="mc-mobile-repair-link" href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a>';
   }
@@ -92,6 +108,8 @@
       '<li><a href="' + toLocalPath("index.html") + '">Home</a></li>',
       '<li><a href="' + toLocalPath("pages/about-me.html") + '">About Us</a></li>',
       '<li><a href="' + toLocalPath("pages/services.html") + '">Services</a></li>',
+      '<li><a href="' + toLocalPath("pages/blog.html") + '">Blog</a></li>',
+      '<li><a href="' + toLocalPath("executive-support/index.html") + '">Executive Support</a></li>',
       '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a></li>',
       "</ul></section>",
       '<section><h3>Visit Us</h3><ul>',
@@ -201,6 +219,13 @@
         });
       }
     });
+
+    document.querySelectorAll("[data-executive-support-link]").forEach(function (link) {
+      link.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = link.getAttribute("href") || toLocalPath("executive-support/index.html");
+      });
+    });
   }
 
   function setupSmoothAnchors() {
@@ -217,7 +242,7 @@
   }
 
   function setupHeroSection() {
-    if (currentPathName() !== "index.html") { return; }
+    if (!isHomePage()) { return; }
     var wixHero = document.getElementById("comp-mq99jgh1");
     if (wixHero) {
       wixHero.style.display = "none";
@@ -253,6 +278,69 @@
       header.parentNode.insertBefore(hero, header.nextSibling);
     } else {
       document.body.insertBefore(hero, document.body.firstChild);
+    }
+  }
+
+  function setupHomepageStatsAndExecutiveSupport() {
+    if (!isHomePage()) { return; }
+
+    var oldStats = document.getElementById("comp-mqanfv5l");
+    if (oldStats) {
+      oldStats.style.display = "none";
+    }
+
+    var oldDivider = document.getElementById("comp-mqhup0rc");
+    if (oldDivider) {
+      oldDivider.style.display = "none";
+    }
+
+    var portfolioDivider = document.getElementById("comp-mqhuoi0s");
+    if (portfolioDivider) {
+      portfolioDivider.style.display = "none";
+    }
+
+    var portfolioSection = document.getElementById("comp-mqihqdvp");
+    if (portfolioSection) {
+      portfolioSection.style.display = "none";
+    }
+
+    if (document.querySelector(".mc-home-executive")) {
+      return;
+    }
+
+    var wrapper = document.createElement("section");
+    wrapper.className = "mc-home-executive mc-reveal";
+    wrapper.innerHTML = [
+      '<div class="mc-container">',
+      '<div class="mc-home-stats" aria-label="myComputerENGR business support statistics">',
+      '<article><strong>12,000+</strong><span>Business Devices Supported</span></article>',
+      '<article><strong>80+</strong><span>Business Clients</span></article>',
+      '<article><strong>Available</strong><span>Executive Priority Support</span></article>',
+      '</div>',
+      '<div class="mc-exec-teaser">',
+      '<div class="mc-exec-copy">',
+      '<p class="mc-services-eyebrow">Executive Technology Support</p>',
+      '<h2>Executive device care for leaders who need priority response.</h2>',
+      '<p>Executive device care for founders, CEOs, directors, executives, and senior management who require priority response and confidential device handling.</p>',
+      '<p>As a Business Leader, your laptop is more than a device - it is where your business runs.</p>',
+      '<p>Get priority, confidential, on-site support designed specifically for executives. We protect executive productivity and the sensitive business information stored on executive devices.</p>',
+      '<a class="mc-repair-btn" data-executive-support-link href="' + toLocalPath("executive-support/index.html") + '">Request Executive Support</a>',
+      '</div>',
+      '<div class="mc-exec-panel" aria-hidden="true">',
+      '<span>Priority</span>',
+      '<strong>Confidential on-site support</strong>',
+      '<p>Office, home, Apple, Windows, and executive smartphone care.</p>',
+      '</div>',
+      '</div>',
+      '</div>'
+    ].join("");
+
+    var learnAbout = document.getElementById("comp-mqak9pft");
+    if (learnAbout && learnAbout.parentNode) {
+      learnAbout.parentNode.insertBefore(wrapper, learnAbout);
+    } else {
+      var footer = document.querySelector(".mc-site-footer");
+      document.body.insertBefore(wrapper, footer || null);
     }
   }
 
@@ -434,6 +522,7 @@
     document.documentElement.classList.add("site-js");
     setupShell();
     setupHeroSection();
+    setupHomepageStatsAndExecutiveSupport();
     setupImages();
     setupLearnAboutBackground();
     setupMobileMenu();
