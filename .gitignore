@@ -1,0 +1,5 @@
+node_modules/
+sanity-studio/node_modules/
+sanity-studio/dist/
+sanity-studio/.env
+.env

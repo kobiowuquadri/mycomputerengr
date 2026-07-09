@@ -48,14 +48,34 @@
     <section class="mc-blog-grid-section mc-container mc-reveal">
       <div class="mc-blog-grid-head">
         <h2>Latest Articles</h2>
+        <p data-blog-count></p>
+      </div>
+
+      <div class="mc-blog-controls" aria-label="Blog search and filters">
+        <label>
+          <span>Search</span>
+          <input type="search" data-blog-search placeholder="Search by title, category, or tag">
+        </label>
+        <label>
+          <span>Category</span>
+          <select data-blog-category-filter>
+            <option value="">All Categories</option>
+          </select>
+        </label>
+        <label>
+          <span>Sort</span>
+          <select data-blog-sort>
+            <option value="latest">Latest</option>
+            <option value="oldest">Oldest</option>
+          </select>
+        </label>
       </div>
 
       <div class="mc-blog-grid" data-blog-list></div>
     </section>
   </main>
 
-  <script src="../assets/js/blog-posts.js"></script>
-  <script src="../assets/js/blog.js"></script>
+  <script type="module" src="../assets/js/sanity-blog.js" data-mc-sanity-blog></script>
   <script src="../assets/js/site-interactions.js"></script>
 </body>
 </html>

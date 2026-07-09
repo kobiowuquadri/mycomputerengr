@@ -70,7 +70,7 @@
       var itemName = item.path.split("/").pop().toLowerCase();
       var aria = (itemName === "index.html" ? isHomePage() : active === itemName) ? ' aria-current="page"' : "";
       return '<a href="' + href + '"' + aria + ">" + item.label + "</a>";
-    }).join("") + '<a class="mc-mobile-repair-link" href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a>';
+    }).join("") + '<a class="mc-mobile-repair-link" href="' + toLocalPath("pages/contact-me.html") + '">Request Onsite Support</a>';
   }
 
   function setupShell() {
@@ -92,7 +92,7 @@
       buildNav(),
       "</nav>",
       '<div class="mc-header-actions">',
-      '<a class="mc-repair-btn" href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a>',
+      '<a class="mc-repair-btn" href="' + toLocalPath("pages/contact-me.html") + '">Request Onsite Support</a>',
       '<button class="mc-menu-toggle" type="button" aria-label="Menu" aria-expanded="false"><span></span></button>',
       "</div>",
       "</div>"
@@ -112,6 +112,7 @@
       '<li><a href="' + toLocalPath("executive-support/index.html") + '">Executive Support</a></li>',
       '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a></li>',
       "</ul></section>",
+      '<section><h3>Recent Posts</h3><div class="mc-footer-recent" data-recent-posts="footer"></div></section>',
       '<section><h3>Visit Us</h3><ul>',
       "<li>myComputerENGR</li>",
       "<li>No 4 Olu Aina Street, Mushin, Lagos, Nigeria</li>",
@@ -256,8 +257,8 @@
       '<div class="mc-hero-content">',
       '<p class="mc-hero-eyebrow">B2B Device Repair &mdash; Lagos, Nigeria</p>',
       '<h1 class="mc-hero-heading">',
-      'Your PC &amp; Smartphone<br>',
-      '<span>Downtime Ends Here!</span>',
+      'Business Device<br> ',
+      '<span>Downtime Ends Here</span>',
       '</h1>',
       '<p class="mc-hero-body">Minimise business technology downtime with our fast on-site support for Apple laptops, desktops, and smartphones, built exclusively for businesses and enterprises. Your team stays productive. Your data stays protected.</p>',
       '<p class="mc-hero-sub">We serve fintechs, startups, NGOs, Schools, Healthcare, Professional Services, Manufacturers, Churches, and SMEs across Lagos and Nigeria &mdash; fixing devices at your office, on your schedule.</p>',
@@ -289,6 +290,11 @@
       oldStats.style.display = "none";
     }
 
+    var oldStatsIntroDivider = document.getElementById("comp-mqhumlwt");
+    if (oldStatsIntroDivider) {
+      oldStatsIntroDivider.style.display = "none";
+    }
+
     var oldDivider = document.getElementById("comp-mqhup0rc");
     if (oldDivider) {
       oldDivider.style.display = "none";
@@ -310,6 +316,7 @@
 
     var wrapper = document.createElement("section");
     wrapper.className = "mc-home-executive mc-reveal";
+    wrapper.style.gridArea = "8 / 1 / 11 / 2";
     wrapper.innerHTML = [
       '<div class="mc-container">',
       '<div class="mc-home-stats" aria-label="myComputerENGR business support statistics">',
@@ -335,8 +342,11 @@
       '</div>'
     ].join("");
 
+    var businessSupport = document.getElementById("comp-mqf3ct0h");
     var learnAbout = document.getElementById("comp-mqak9pft");
-    if (learnAbout && learnAbout.parentNode) {
+    if (businessSupport && businessSupport.parentNode) {
+      businessSupport.insertAdjacentElement("afterend", wrapper);
+    } else if (learnAbout && learnAbout.parentNode) {
       learnAbout.parentNode.insertBefore(wrapper, learnAbout);
     } else {
       var footer = document.querySelector(".mc-site-footer");
@@ -507,6 +517,42 @@
     section.appendChild(extra);
   }
 
+  function setupHomepageRecentPosts() {
+    if (!isHomePage() || document.querySelector(".mc-home-recent-posts")) {
+      return;
+    }
+
+    var section = document.createElement("section");
+    section.className = "mc-home-recent-posts mc-container mc-reveal";
+    section.innerHTML = [
+      '<div class="mc-blog-grid-head">',
+      '<h2>Recent Posts</h2>',
+      '<a class="mc-blog-link" href="' + toLocalPath("pages/blog.html") + '">View Blog</a>',
+      '</div>',
+      '<div class="mc-blog-grid" data-recent-posts="home"></div>'
+    ].join("");
+
+    var urgentRepair = document.getElementById("comp-mqav3nkw");
+    var footer = document.querySelector(".mc-site-footer");
+    if (urgentRepair && urgentRepair.parentNode) {
+      urgentRepair.parentNode.insertBefore(section, urgentRepair);
+    } else {
+      document.body.insertBefore(section, footer || null);
+    }
+  }
+
+  function setupSanityBlogModule() {
+    if (document.querySelector('script[data-mc-sanity-blog]')) {
+      return;
+    }
+
+    var script = document.createElement("script");
+    script.type = "module";
+    script.src = assetPath("js/sanity-blog.js");
+    script.setAttribute("data-mc-sanity-blog", "");
+    document.body.appendChild(script);
+  }
+
   function setupWhatsApp() {
     var btn = document.createElement('a');
     btn.className = 'mc-wa-fab';
@@ -533,6 +579,8 @@
     setupPartnerMarquee();
     setupTestimonialsMarquee();
     setupWhyChooseExtra();
+    setupHomepageRecentPosts();
     setupWhatsApp();
+    setupSanityBlogModule();
   });
 }());

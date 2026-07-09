@@ -6,7 +6,7 @@ const pages = [
   "/pages/about-me.html",
   "/pages/services.html",
   "/pages/blog.html",
-  "/pages/single-blog.html?slug=reduce-laptop-downtime",
+  "/pages/single-blog.html?slug=test-post",
   "/executive-support/",
   "/pages/portfolio.html",
   "/pages/contact-me.html",
@@ -115,20 +115,46 @@ test.describe("site polish verification", () => {
   test("blog index renders dynamic posts and links to the single blog template", async ({ page }) => {
     await page.goto(`${baseURL}/pages/blog.html`, { waitUntil: "networkidle" });
 
+    const configured = await page.evaluate(async () => {
+      const module = await import("/assets/js/sanity-config.js");
+      return module.sanityConfig.projectId !== "your-project-id";
+    });
+
+    if (!configured) {
+      await expect(page.locator(".mc-blog-state")).toContainText("Connect Sanity");
+      return;
+    }
+
     await expect(page.locator("[data-blog-featured] .mc-blog-featured-card")).toBeVisible();
-    await expect(page.locator("[data-blog-list] .mc-blog-card")).toHaveCount(3);
-    await expect(page.locator(".mc-blog-featured-copy h2")).toContainText("How to Reduce Laptop Downtime");
+    await expect(page.locator("[data-blog-list] .mc-blog-card").first()).toBeVisible();
+    await expect(page.locator("[data-blog-search]")).toBeVisible();
+    await expect(page.locator("[data-blog-category-filter]")).toBeVisible();
 
     const articleHref = await page.locator(".mc-blog-featured-copy h2 a").getAttribute("href");
-    expect(articleHref).toBe("single-blog.html?slug=reduce-laptop-downtime");
+    expect(articleHref).toMatch(/single-blog\.html\?slug=/);
   });
 
   test("single blog page renders the selected post", async ({ page }) => {
-    await page.goto(`${baseURL}/pages/single-blog.html?slug=executive-priority-device-care`, { waitUntil: "networkidle" });
+    await page.goto(`${baseURL}/pages/single-blog.html?slug=test-post`, { waitUntil: "networkidle" });
 
-    await expect(page.locator("h1")).toContainText("Why Executives Need Priority Device Care");
-    await expect(page.locator(".mc-blog-post-body p")).toHaveCount(5);
-    await expect(page.locator(".mc-blog-post-actions .mc-repair-btn")).toHaveAttribute("href", "../executive-support/index.html");
+    const configured = await page.evaluate(async () => {
+      const module = await import("/assets/js/sanity-config.js");
+      return module.sanityConfig.projectId !== "your-project-id";
+    });
+
+    if (!configured) {
+      await expect(page.locator(".mc-blog-state")).toContainText("Connect Sanity");
+      return;
+    }
+
+    await page.goto(`${baseURL}/pages/blog.html`, { waitUntil: "networkidle" });
+    const firstArticleHref = await page.locator(".mc-blog-featured-copy h2 a").getAttribute("href");
+    await page.goto(new URL(firstArticleHref, `${baseURL}/pages/blog.html`).toString(), { waitUntil: "networkidle" });
+
+    await expect(page.locator(".mc-blog-post-image")).toBeVisible();
+    await expect(page.locator(".mc-blog-post-body")).toBeVisible();
+    await expect(page.locator(".mc-blog-sidebar")).toBeVisible();
+    await expect(page.locator(".mc-blog-post-actions .mc-repair-btn")).toHaveAttribute("href", "../pages/blog.html");
   });
 
   test("navigation links resolve locally and omit Contact Me", async ({ page }) => {
@@ -138,6 +164,9 @@ test.describe("site polish verification", () => {
     await expect(page.locator(".mc-footer")).not.toContainText("Contact Me");
     await expect(page.locator(".mc-primary-nav")).toContainText("Blog");
     await expect(page.locator(".mc-header-actions .mc-repair-btn")).toHaveAttribute("href", "pages/contact-me.html");
+    await expect(page.locator(".mc-header-actions .mc-repair-btn")).toContainText("Request Onsite Support");
+    await expect(page.locator(".mc-hero-heading")).toContainText("Business Device");
+    await expect(page.locator(".mc-hero-heading")).toContainText("Downtime Ends Here");
     await expect(page.locator(".mc-home-executive .mc-repair-btn")).toHaveAttribute("href", "executive-support/index.html");
 
     const hrefs = await page.evaluate(() =>

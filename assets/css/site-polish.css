@@ -257,8 +257,8 @@ body.site-menu-open .mc-menu-toggle span::after {
   margin: 0 auto;
   padding: 58px 0 44px;
   display: grid;
-  grid-template-columns: 1.3fr 1fr 1.4fr 1fr;
-  gap: 56px;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.85fr) minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 0.75fr);
+  gap: 34px;
 }
 
 .mc-footer h2,
@@ -282,6 +282,15 @@ body.site-menu-open .mc-menu-toggle span::after {
 
 .mc-footer a:hover {
   color: var(--mc-cyan);
+}
+
+.mc-footer-recent {
+  display: grid;
+  gap: 10px;
+}
+
+.mc-recent-footer-link {
+  display: block;
 }
 
 .mc-socials {
@@ -1079,6 +1088,10 @@ wow-image img,
 }
 
 .mc-blog-grid-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 18px;
   margin-bottom: 26px;
 }
 
@@ -1086,6 +1099,49 @@ wow-image img,
   margin: 0;
   color: #fff;
   font: 800 32px/1.2 "Wix Madefor Display", "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-grid-head p {
+  margin: 0;
+  color: #7a9ab8;
+  font: 800 12px/1 "Wix Madefor Text", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mc-blog-controls {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(190px, 0.8fr) minmax(150px, 0.6fr);
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.mc-blog-controls label {
+  display: grid;
+  gap: 8px;
+  min-width: 0;
+  color: #a8bcd4;
+  font: 800 12px/1 "Wix Madefor Text", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mc-blog-controls input,
+.mc-blog-controls select {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid rgba(0, 229, 255, 0.18);
+  border-radius: 8px;
+  background: #07111f;
+  color: #dce8ff;
+  font: 600 14px/1.4 "Wix Madefor Text", sans-serif;
+  padding: 0 14px;
+}
+
+.mc-blog-controls input:focus,
+.mc-blog-controls select:focus {
+  border-color: var(--mc-cyan);
+  box-shadow: 0 0 0 3px rgba(0, 229, 255, 0.1);
 }
 
 .mc-blog-grid {
@@ -1110,6 +1166,66 @@ wow-image img,
 
 .mc-blog-card div {
   padding: 24px 22px 26px;
+}
+
+.mc-blog-state {
+  grid-column: 1 / -1;
+  padding: 34px;
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  border-radius: 8px;
+  background: #07111f;
+}
+
+.mc-blog-state h2 {
+  margin: 0 0 10px;
+  color: #fff;
+  font: 800 24px/1.2 "Wix Madefor Display", "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-state p {
+  max-width: 680px;
+  margin: 0;
+  color: #a8bcd4;
+  font: 500 15px/1.7 "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-state--error {
+  border-color: rgba(255, 128, 54, 0.28);
+}
+
+.mc-skeleton-card {
+  pointer-events: none;
+}
+
+.mc-skeleton-media,
+.mc-skeleton-line {
+  display: block;
+  border-radius: 8px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.13), rgba(255,255,255,0.06));
+  background-size: 220% 100%;
+  animation: mcSkeleton 1.4s ease-in-out infinite;
+}
+
+.mc-skeleton-media {
+  height: 210px;
+}
+
+.mc-skeleton-line {
+  height: 14px;
+  margin-bottom: 12px;
+}
+
+.mc-skeleton-line--short {
+  width: 42%;
+}
+
+.mc-skeleton-line--tiny {
+  width: 28%;
+}
+
+@keyframes mcSkeleton {
+  0% { background-position: 120% 0; }
+  100% { background-position: -120% 0; }
 }
 
 .mc-blog-post-hero {
@@ -1139,8 +1255,17 @@ wow-image img,
   text-transform: uppercase;
 }
 
+.mc-blog-post-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 44px;
+  align-items: start;
+  padding: 54px 0 44px;
+}
+
 .mc-blog-post {
-  padding: 54px 0 86px;
+  min-width: 0;
+  padding: 0 0 42px;
 }
 
 .mc-blog-post-image {
@@ -1162,12 +1287,160 @@ wow-image img,
   font: 500 18px/1.82 "Wix Madefor Text", sans-serif;
 }
 
+.mc-blog-post-body h2,
+.mc-blog-post-body h3 {
+  margin: 34px 0 16px;
+  color: #fff;
+  font: 800 28px/1.2 "Wix Madefor Display", "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-post-body h3 {
+  font-size: 23px;
+}
+
+.mc-blog-post-body a {
+  color: var(--mc-cyan);
+}
+
+.mc-blog-post-body ul,
+.mc-blog-post-body ol {
+  margin: 0 0 24px 22px;
+  color: #c6d0dd;
+  font: 500 17px/1.8 "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-post-body blockquote {
+  margin: 30px 0;
+  padding: 20px 24px;
+  border-left: 3px solid var(--mc-cyan);
+  background: rgba(0, 229, 255, 0.06);
+  color: #dce8ff;
+  font: 700 19px/1.7 "Wix Madefor Text", sans-serif;
+}
+
+.mc-rich-image {
+  margin: 34px 0;
+}
+
+.mc-rich-image img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.mc-rich-image figcaption {
+  margin-top: 8px;
+  color: #7a9ab8;
+  font: 500 13px/1.5 "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-sidebar {
+  position: sticky;
+  top: 96px;
+  display: grid;
+  gap: 22px;
+}
+
+.mc-blog-sidebar section {
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  border-radius: 8px;
+  background: #07111f;
+  padding: 22px;
+}
+
+.mc-blog-sidebar h2,
+.mc-blog-related h2 {
+  margin: 0 0 18px;
+  color: #fff;
+  font: 800 22px/1.2 "Wix Madefor Display", "Wix Madefor Text", sans-serif;
+}
+
+.mc-recent-sidebar-link {
+  display: grid;
+  gap: 6px;
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.1);
+}
+
+.mc-recent-sidebar-link:last-child {
+  border-bottom: 0;
+}
+
+.mc-recent-sidebar-link span {
+  color: var(--mc-cyan);
+  font: 800 11px/1 "Wix Madefor Text", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mc-recent-sidebar-link strong {
+  color: #dce8ff;
+  font: 800 15px/1.35 "Wix Madefor Text", sans-serif;
+}
+
 .mc-blog-post-actions {
   display: flex;
   align-items: center;
   gap: 20px;
   flex-wrap: wrap;
   margin-top: 34px;
+}
+
+.mc-blog-share {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.mc-blog-share a,
+.mc-blog-neighbors a,
+.mc-blog-nav-disabled {
+  border: 1px solid rgba(0, 229, 255, 0.14);
+  border-radius: 8px;
+  background: rgba(0, 229, 255, 0.06);
+}
+
+.mc-blog-share a {
+  padding: 10px 14px;
+  color: var(--mc-cyan);
+  font: 800 13px/1 "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-neighbors {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  padding-bottom: 44px;
+}
+
+.mc-blog-neighbors a,
+.mc-blog-nav-disabled {
+  min-height: 106px;
+  padding: 20px;
+  display: grid;
+  align-content: center;
+  gap: 8px;
+}
+
+.mc-blog-neighbors span,
+.mc-blog-nav-disabled {
+  color: #7a9ab8;
+  font: 800 11px/1 "Wix Madefor Text", sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.mc-blog-neighbors strong {
+  color: #dce8ff;
+  font: 800 18px/1.35 "Wix Madefor Text", sans-serif;
+}
+
+.mc-blog-related {
+  padding-bottom: 88px;
+}
+
+.mc-home-recent-posts {
+  padding: 72px 0;
 }
 
 .mc-faq-section {
@@ -1336,12 +1609,19 @@ wow-image img,
   .mc-home-stats,
   .mc-exec-teaser,
   .mc-executive-form-shell,
+  .mc-blog-controls,
   .mc-blog-featured-card,
-  .mc-blog-grid {
+  .mc-blog-grid,
+  .mc-blog-post-shell,
+  .mc-blog-neighbors {
     grid-template-columns: 1fr;
   }
 
   .mc-executive-note {
+    position: static;
+  }
+
+  .mc-blog-sidebar {
     position: static;
   }
 
@@ -1441,11 +1721,16 @@ wow-image img,
     font-size: 25px;
   }
 
+  .mc-blog-grid-head {
+    display: grid;
+    align-items: start;
+  }
+
   .mc-blog-card img {
     height: 190px;
   }
 
-  .mc-blog-post {
+  .mc-blog-post-shell {
     padding: 38px 0 62px;
   }
 
