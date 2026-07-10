@@ -1442,8 +1442,22 @@ wow-image img,
 .mc-home-recent-posts {
   padding: 72px 0;
   position: relative;
-  z-index: 4;
+  z-index: 20;
   pointer-events: auto;
+  isolation: isolate;
+  background: #07111f;
+  box-shadow: 0 0 0 100vmax #07111f;
+  clip-path: inset(0 -100vmax);
+}
+
+.mc-home-recent-posts::before {
+  content: "";
+  position: absolute;
+  inset: 0 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: #07111f;
+  z-index: -1;
 }
 
 #comp-mqhuos53,
