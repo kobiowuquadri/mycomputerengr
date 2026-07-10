@@ -20,15 +20,16 @@ copy .env.example .env
 Update `.env`:
 
 ```bash
-SANITY_STUDIO_PROJECT_ID=your-project-id
+SANITY_STUDIO_PROJECT_ID=lezgayc8
 SANITY_STUDIO_DATASET=production
+SANITY_WRITE_TOKEN=your_sanity_write_token
 ```
 
 Also update the public website config in `assets/js/sanity-config.js`:
 
 ```js
 export const sanityConfig = {
-  projectId: "your-project-id",
+  projectId: "lezgayc8",
   dataset: "production",
   apiVersion: "2026-07-08",
   useCdn: true,
@@ -37,6 +38,14 @@ export const sanityConfig = {
   cacheSeconds: 300
 };
 ```
+
+In Sanity Manage, open `API` > `CORS origins` and add:
+
+- `http://localhost:3000`
+- `http://127.0.0.1:3000`
+- `https://mycomputerengr.ng`
+
+Allow credentials can stay off for the public website because it only reads published content from the CDN.
 
 ## 2. Run Sanity Studio
 
@@ -51,6 +60,7 @@ The Studio opens locally at the URL shown in the terminal, usually `http://local
 
 ```bash
 cd sanity-studio
+npm run login
 npm run deploy
 ```
 
@@ -68,6 +78,25 @@ In Sanity Studio:
 6. Turn on `Featured Post` for posts that should appear at the top of the Blog page.
 
 Draft posts are ignored by the public website.
+
+## Seed a Test Blog Post
+
+To quickly create a test author, category, image asset, and published blog post:
+
+1. In Sanity Manage, open the project `lezgayc8`.
+2. Go to `API` > `Tokens`.
+3. Create a token with write access, such as `Editor`.
+4. Open `sanity-studio/.env`.
+5. Replace `replace_with_sanity_write_token` with the token value.
+6. Run:
+
+```bash
+cd sanity-studio
+npm install
+npm run seed:test
+```
+
+The script creates a published post titled `How to Reduce Business Device Downtime`.
 
 ## 5. Edit Blog Posts
 

@@ -1,5 +1,5 @@
 export const sanityConfig = {
-  projectId: "your-project-id",
+  projectId: "lezgayc8",
   dataset: "production",
   apiVersion: "2026-07-08",
   useCdn: true,
