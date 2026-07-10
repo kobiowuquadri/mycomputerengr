@@ -524,13 +524,22 @@
 
     var section = document.createElement("section");
     section.className = "mc-home-recent-posts mc-container mc-reveal";
+    section.style.gridArea = "17 / 1 / 21 / 2";
+    var blogHref = toLocalPath("pages/blog.html");
     section.innerHTML = [
       '<div class="mc-blog-grid-head">',
       '<h2>Recent Posts</h2>',
-      '<a class="mc-blog-link" href="' + toLocalPath("pages/blog.html") + '">View Blog</a>',
+      '<a class="mc-blog-link" data-blog-index-link href="' + blogHref + '">View Blog</a>',
       '</div>',
       '<div class="mc-blog-grid" data-recent-posts="home"></div>'
     ].join("");
+
+    ["comp-mqhuos53", "comp-mqii17tj", "comp-mqhun649"].forEach(function (id) {
+      var divider = document.getElementById(id);
+      if (divider) {
+        divider.style.display = "none";
+      }
+    });
 
     var urgentRepair = document.getElementById("comp-mqav3nkw");
     var footer = document.querySelector(".mc-site-footer");
@@ -538,6 +547,14 @@
       urgentRepair.parentNode.insertBefore(section, urgentRepair);
     } else {
       document.body.insertBefore(section, footer || null);
+    }
+
+    var blogLink = section.querySelector("[data-blog-index-link]");
+    if (blogLink) {
+      blogLink.addEventListener("click", function (event) {
+        event.preventDefault();
+        window.location.href = blogHref;
+      });
     }
   }
 

@@ -1441,6 +1441,15 @@ wow-image img,
 
 .mc-home-recent-posts {
   padding: 72px 0;
+  position: relative;
+  z-index: 4;
+  pointer-events: auto;
+}
+
+#comp-mqhuos53,
+#comp-mqii17tj,
+#comp-mqhun649 {
+  display: none !important;
 }
 
 .mc-faq-section {
