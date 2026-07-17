@@ -54,7 +54,7 @@
 
   function iconMarkup() {
     return [
-      '<img class="mc-brand-logo" src="' + assetPath("images/logo.png") + '" alt="Modules">'
+      '<img class="mc-brand-logo" src="' + assetPath("images/logo 2.png") + '" alt="Modules">'
     ].join("");
   }
 
