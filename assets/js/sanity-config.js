@@ -3,7 +3,7 @@ export const sanityConfig = {
   dataset: "production",
   apiVersion: "2026-07-08",
   useCdn: true,
-  siteUrl: "https://mycomputerengr.ng",
-  studioUrl: "https://mycomputerengr.sanity.studio",
+  siteUrl: "https://modules.ng",
+  studioUrl: "https://modules.sanity.studio",
   cacheSeconds: 300
 };

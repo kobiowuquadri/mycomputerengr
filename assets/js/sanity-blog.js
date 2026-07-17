@@ -247,7 +247,7 @@ function navArticle(label, post) {
 
 function shareButtons(post) {
   var url = encodeURIComponent(window.location.href);
-  var title = encodeURIComponent(post.title || "myComputerENGR Blog");
+  var title = encodeURIComponent(post.title || "Modules Blog");
   return [
     '<div class="mc-blog-share" aria-label="Share this article">',
     '<a href="https://www.linkedin.com/sharing/share-offsite/?url=' + url + '" target="_blank" rel="noreferrer noopener">LinkedIn</a>',

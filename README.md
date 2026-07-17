@@ -1,6 +1,6 @@
-# myComputerENGR Website and Sanity Blog CMS
+# Modules Website and Sanity Blog CMS
 
-This repository contains the static myComputerENGR website and a Sanity Studio for managing blog content without editing website code.
+This repository contains the static Modules website and a Sanity Studio for managing blog content without editing website code.
 
 ## 1. Install Sanity Studio
 
@@ -33,8 +33,8 @@ export const sanityConfig = {
   dataset: "production",
   apiVersion: "2026-07-08",
   useCdn: true,
-  siteUrl: "https://mycomputerengr.ng",
-  studioUrl: "https://mycomputerengr.sanity.studio",
+  siteUrl: "https://modules.ng",
+  studioUrl: "https://modules.sanity.studio",
   cacheSeconds: 300
 };
 ```
@@ -43,7 +43,7 @@ In Sanity Manage, open `API` > `CORS origins` and add:
 
 - `http://localhost:3000`
 - `http://127.0.0.1:3000`
-- `https://mycomputerengr.ng`
+- `https://modules.ng`
 
 Allow credentials can stay off for the public website because it only reads published content from the CDN.
 

@@ -100,8 +100,8 @@
 - Removed visible `Contact Me` navigation/footer list items from the new local shell.
 - Routed all visible `Book a Repair` actions to `pages/contact-me.html`.
 - Added LinkedIn and X footer icons with the requested links:
-  - `https://www.linkedin.com/company/mycomputerengr/`
-  - `https://x.com/myComputerENGR`
+  - `https://www.linkedin.com/company/Modules/`
+  - `https://x.com/Modules`
 - Added professional page reveal/button/social animations while keeping content readable on first paint.
 - Updated `assets/js/contact-mailer.js` for the new contact form fields and pre-filled email draft.
 - Updated `tests/verify-site.spec.js` to verify the manual shell, contact page, FAQ, map iframe, mailto form, and local navigation.

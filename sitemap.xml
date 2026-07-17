@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mycomputerengr.ng/</loc>
+    <loc>https://modules.ng/</loc>
     <priority>1.0</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/pages/about-me.html</loc>
+    <loc>https://modules.ng/pages/about-me.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/pages/services.html</loc>
+    <loc>https://modules.ng/pages/services.html</loc>
     <priority>0.9</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/pages/blog.html</loc>
+    <loc>https://modules.ng/pages/blog.html</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/pages/single-blog.html</loc>
+    <loc>https://modules.ng/pages/single-blog.html</loc>
     <priority>0.6</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/executive-support/</loc>
+    <loc>https://modules.ng/executive-support/</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/pages/portfolio.html</loc>
+    <loc>https://modules.ng/pages/portfolio.html</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://mycomputerengr.ng/pages/contact-me.html</loc>
+    <loc>https://modules.ng/pages/contact-me.html</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>

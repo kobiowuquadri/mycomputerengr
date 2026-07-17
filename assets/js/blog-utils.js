@@ -48,7 +48,7 @@ export function categoryTitle(post) {
 }
 
 export function authorName(post) {
-  return post && post.author && post.author.name ? post.author.name : "myComputerENGR";
+  return post && post.author && post.author.name ? post.author.name : "Modules";
 }
 
 export function postMeta(post) {
@@ -98,11 +98,11 @@ export function setCanonical(url) {
 
 export function updatePostSeo(post) {
   var title = post.seoTitle || post.title || "Blog Article";
-  var description = post.seoDescription || post.excerpt || "Read practical business device support guidance from myComputerENGR.";
+  var description = post.seoDescription || post.excerpt || "Read practical business device support guidance from Modules.";
   var url = sanityConfig.siteUrl.replace(/\/+$/, "") + "/pages/single-blog.html?slug=" + encodeURIComponent(post.slug);
   var socialImage = optimizedImage(post.openGraphImage || post.featuredImage, {width: 1200, height: 630, quality: 85});
 
-  document.title = title + " | myComputerENGR";
+  document.title = title + " | Modules";
   setMeta("description", description);
   setCanonical(url);
   setMeta("og:title", title, true);

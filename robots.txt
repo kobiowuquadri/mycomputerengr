@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mycomputerengr.ng/sitemap.xml
+Sitemap: https://modules.ng/sitemap.xml

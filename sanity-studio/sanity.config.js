@@ -7,8 +7,8 @@ const projectId = process.env.SANITY_STUDIO_PROJECT_ID || 'lezgayc8'
 const dataset = process.env.SANITY_STUDIO_DATASET || 'production'
 
 export default defineConfig({
-  name: 'mycomputerengr',
-  title: 'myComputerENGR CMS',
+  name: 'Modules',
+  title: 'Modules CMS',
   projectId,
   dataset,
   plugins: [

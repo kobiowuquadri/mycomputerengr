@@ -67,11 +67,11 @@ async function uploadFeaturedImage() {
 
 async function seed() {
   const author = await client.createIfNotExists({
-    _id: 'author-mycomputerengr',
+    _id: 'author-modules',
     _type: 'author',
-    name: 'myComputerENGR Team',
+    name: 'Modules Team',
     role: 'Business Device Support Team',
-    bio: 'Practical technology support insights from the myComputerENGR team.',
+    bio: 'Practical technology support insights from the Modules team.',
   })
 
   const category = await client.createIfNotExists({
@@ -87,7 +87,7 @@ async function seed() {
     ? {
         _type: 'image',
         asset: {_type: 'reference', _ref: imageAsset._id},
-        alt: 'Laptop repair workbench at myComputerENGR',
+        alt: 'Laptop repair workbench at Modules',
         caption: 'Preventive business device support keeps teams productive.',
       }
     : undefined

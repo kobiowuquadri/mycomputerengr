@@ -54,12 +54,7 @@
 
   function iconMarkup() {
     return [
-      '<svg class="mc-brand-mark" viewBox="0 0 64 64" aria-hidden="true">',
-      '<rect x="8" y="12" width="48" height="34" rx="5" fill="none" stroke="#00e5ff" stroke-width="3"/>',
-      '<path d="M21 53h22M28 46v7M36 46v7" fill="none" stroke="#dce8ff" stroke-width="3" stroke-linecap="round"/>',
-      '<circle cx="32" cy="29" r="7" fill="none" stroke="#00e5ff" stroke-width="2.5"/>',
-      '<path d="M32 18v4M32 36v4M21 29h4M39 29h4M24 21l3 3M37 34l3 3M40 21l-3 3M27 34l-3 3" stroke="#00e5ff" stroke-width="2" stroke-linecap="round"/>',
-      "</svg>"
+      '<img class="mc-brand-logo" src="' + assetPath("images/logo.png") + '" alt="Modules">'
     ].join("");
   }
 
@@ -84,9 +79,8 @@
     header.className = "mc-site-header";
     header.innerHTML = [
       '<div class="mc-header-inner">',
-      '<a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="myComputerEngr home">',
+      '<a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="Modules home">',
       iconMarkup(),
-      '<span>myComputer<span>Engr</span></span>',
       "</a>",
       '<nav class="mc-primary-nav" aria-label="Primary navigation">',
       buildNav(),
@@ -103,28 +97,28 @@
     footer.className = "mc-site-footer mc-footer";
     footer.innerHTML = [
       '<div class="mc-footer-grid">',
-      '<section><a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="myComputerEngr home">' + iconMarkup() + '<span>myComputer<span class="mc-accent">Engr</span></span></a><p>B2B on-site computer and smartphone repair for businesses across Lagos, Nigeria.</p></section>',
+      '<section class="mc-footer-company"><a class="mc-brand" href="' + toLocalPath("index.html") + '" aria-label="Modules home">' + iconMarkup() + '</a><div class="mc-footer-company-copy"><p class="mc-footer-tagline">Business Technology Support for Growing Organisations.</p><p>Minimise technology downtime through on-site business device support, managed IT services, executive technology support, and device lifecycle management.</p><p class="mc-footer-parent">A Cyberblock Company.</p></div></section>',
       '<section><h3>Quick Link</h3><ul>',
       '<li><a href="' + toLocalPath("index.html") + '">Home</a></li>',
       '<li><a href="' + toLocalPath("pages/about-me.html") + '">About Us</a></li>',
       '<li><a href="' + toLocalPath("pages/services.html") + '">Services</a></li>',
       '<li><a href="' + toLocalPath("pages/blog.html") + '">Blog</a></li>',
       '<li><a href="' + toLocalPath("executive-support/index.html") + '">Executive Support</a></li>',
-      '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Book a Repair</a></li>',
+      '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Request Onsite Support</a></li>',
       "</ul></section>",
       '<section><h3>Recent Posts</h3><div class="mc-footer-recent" data-recent-posts="footer"></div></section>',
       '<section><h3>Visit Us</h3><ul>',
-      "<li>myComputerENGR</li>",
+      "<li>Modules</li>",
       "<li>No 4 Olu Aina Street, Mushin, Lagos, Nigeria</li>",
-      '<li><a href="mailto:support@mycomputerengr.ng">support@mycomputerengr.ng</a></li>',
+      '<li><a href="mailto:support@modules.ng">support@modules.ng</a></li>',
       '<li><a href="tel:09031832073">09031832073</a></li>',
       "</ul></section>",
       '<section><h3>Social</h3><div class="mc-socials">',
-      '<a href="https://www.linkedin.com/company/mycomputerengr/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><img src="' + assetPath("images/linkedin.svg") + '" alt=""></a>',
-      '<a href="https://x.com/myComputerENGR" target="_blank" rel="noreferrer noopener" aria-label="X"><img src="' + assetPath("images/x.svg") + '" alt=""></a>',
+      '<a href="https://www.linkedin.com/company/modules-ng/" target="_blank" rel="noreferrer noopener" aria-label="LinkedIn"><img src="' + assetPath("images/linkedin.svg") + '" alt=""></a>',
+      '<a href="https://x.com/modulesng" target="_blank" rel="noreferrer noopener" aria-label="X"><img src="' + assetPath("images/x.svg") + '" alt=""></a>',
       "</div></section>",
       "</div>",
-      '<div class="mc-footer-bottom">&copy; 2026 by myComputerEngr. Designed by <a href="https://devquat.xyz" target="_blank" rel="noreferrer noopener" class="mc-accent">DevQuat</a></div>'
+      '<div class="mc-footer-bottom">&copy; 2026 by Modules. Designed by <a href="https://devquat.xyz" target="_blank" rel="noreferrer noopener" class="mc-accent">DevQuat</a></div>'
     ].join("");
     document.body.appendChild(footer);
   }
@@ -319,7 +313,7 @@
     wrapper.style.gridArea = "8 / 1 / 11 / 2";
     wrapper.innerHTML = [
       '<div class="mc-container">',
-      '<div class="mc-home-stats" aria-label="myComputerENGR business support statistics">',
+      '<div class="mc-home-stats" aria-label="Modules business support statistics">',
       '<article><strong>12,000+</strong><span>Business Devices Supported</span></article>',
       '<article><strong>80+</strong><span>Business Clients</span></article>',
       '<article><strong>Available</strong><span>Executive Priority Support</span></article>',
@@ -448,11 +442,11 @@
 
     var cards = [
       { quote: 'They came to our office and fixed 5 company laptops on the same day. Exceptional service — zero disruption to our team.', name: 'Chioma O.', role: 'Operations Manager' },
-      { quote: 'Fast WhatsApp response and a technician at our office within the hour. myComputerENGR runs like a professional IT department.', name: 'Adeyemi', role: 'IT Lead' },
-      { quote: 'We outsource all device maintenance to myComputerENGR. Transparent pricing, always on-site, always reliable.', name: 'Tunde A.', role: 'CEO' },
-      { quote: 'From our CEO’s MacBook to staff iPhones — myComputerENGR handles everything on-site. Data-safe and completely discreet.', name: 'Adekunle B.', role: 'CTO' },
+      { quote: 'Fast WhatsApp response and a technician at our office within the hour. Modules runs like a professional IT department.', name: 'Adeyemi', role: 'IT Lead' },
+      { quote: 'We outsource all device maintenance to Modules. Transparent pricing, always on-site, always reliable.', name: 'Tunde A.', role: 'CEO' },
+      { quote: 'From our CEO’s MacBook to staff iPhones — Modules handles everything on-site. Data-safe and completely discreet.', name: 'Adekunle B.', role: 'CTO' },
       { quote: 'Best enterprise IT support we have had. Quick diagnosis, honest pricing, and they always show up on time.', name: 'Funke A.', role: 'Office Manager' },
-      { quote: 'Our team of 20 relies on myComputerENGR for all hardware issues. They have never let us down. Highly recommended.', name: 'Emeka O.', role: 'Head of Engineering' }
+      { quote: 'Our team of 20 relies on Modules for all hardware issues. They have never let us down. Highly recommended.', name: 'Emeka O.', role: 'Head of Engineering' }
     ];
 
     function stars() {
