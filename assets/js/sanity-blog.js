@@ -39,8 +39,11 @@ function getCategories() {
   return categoriesPromise;
 }
 
-function getSinglePost(slug) {
-  return sanityFetch(singlePostQuery, {slug});
+function getSinglePost(identifier) {
+  return sanityFetch(singlePostQuery, {
+    id: identifier && identifier.id ? identifier.id : "",
+    slug: identifier && identifier.slug ? identifier.slug : ""
+  });
 }
 
 function skeletonCards(count) {
@@ -214,7 +217,9 @@ function findSiblingPosts(posts, current) {
   var ordered = posts.slice().sort(function (a, b) {
     return new Date(b.publishedAt || 0).getTime() - new Date(a.publishedAt || 0).getTime();
   });
-  var index = ordered.findIndex(function (post) { return post.slug === current.slug; });
+  var index = ordered.findIndex(function (post) {
+    return (post._id && post._id === current._id) || (post.slug && post.slug === current.slug);
+  });
   return {
     newer: index > 0 ? ordered[index - 1] : null,
     older: index !== -1 && index < ordered.length - 1 ? ordered[index + 1] : null
@@ -224,7 +229,7 @@ function findSiblingPosts(posts, current) {
 function relatedPosts(posts, current) {
   var tags = current.tags || [];
   return posts.filter(function (post) {
-    if (post.slug === current.slug) {
+    if ((post._id && post._id === current._id) || (post.slug && post.slug === current.slug)) {
       return false;
     }
     var sameCategory = post.category && current.category && post.category._id === current.category._id;
@@ -283,7 +288,7 @@ function renderSinglePost(post, posts) {
     renderPortableText(post.body),
     shareButtons(post),
     '<div class="mc-blog-post-actions">',
-    '<a class="mc-repair-btn" href="' + escapeHtml(blogUrl()) + '">Back to Blog</a>',
+    '<a class="mc-repair-btn mc-blog-action-btn" href="' + escapeHtml(blogUrl()) + '"><span>View Blog</span></a>',
     '</div>',
     '</div>',
     '</article>',
@@ -316,13 +321,15 @@ async function initSinglePost() {
   }
 
   try {
-    var slug = new URLSearchParams(window.location.search).get("slug");
-    if (!slug) {
-      root.innerHTML = stateMarkup("Article not found", "The article URL is missing a slug.", "error");
+    var params = new URLSearchParams(window.location.search);
+    var id = params.get("id");
+    var slug = params.get("slug");
+    if (!id && !slug) {
+      root.innerHTML = stateMarkup("Article not found", "The article URL is missing a post ID.", "error");
       return;
     }
 
-    var results = await Promise.all([getPosts(), getSinglePost(slug)]);
+    var results = await Promise.all([getPosts(), getSinglePost({id: id, slug: slug})]);
     var posts = results[0] || [];
     var post = results[1];
     if (!post) {

@@ -25,7 +25,10 @@ export function pathFromRoot(path) {
 }
 
 export function postUrl(post) {
-  return pathFromRoot("pages/single-blog.html") + "?slug=" + encodeURIComponent(post.slug || "");
+  var id = post && post._id ? String(post._id) : "";
+  var slug = post && post.slug ? String(post.slug) : "";
+  var query = id ? "?id=" + encodeURIComponent(id) : "?slug=" + encodeURIComponent(slug);
+  return pathFromRoot("pages/single-blog.html") + query;
 }
 
 export function blogUrl() {
@@ -99,7 +102,10 @@ export function setCanonical(url) {
 export function updatePostSeo(post) {
   var title = post.seoTitle || post.title || "Blog Article";
   var description = post.seoDescription || post.excerpt || "Read practical business device support guidance from Modules.";
-  var url = sanityConfig.siteUrl.replace(/\/+$/, "") + "/pages/single-blog.html?slug=" + encodeURIComponent(post.slug);
+  var id = post && post._id ? String(post._id) : "";
+  var slug = post && post.slug ? String(post.slug) : "";
+  var query = id ? "?id=" + encodeURIComponent(id) : "?slug=" + encodeURIComponent(slug);
+  var url = sanityConfig.siteUrl.replace(/\/+$/, "") + "/pages/single-blog.html" + query;
   var socialImage = optimizedImage(post.openGraphImage || post.featuredImage, {width: 1200, height: 630, quality: 85});
 
   document.title = title + " | Modules";

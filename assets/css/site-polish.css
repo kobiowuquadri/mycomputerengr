@@ -1421,6 +1421,15 @@ wow-image img,
   margin-top: 34px;
 }
 
+.mc-blog-action-btn span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  color: #04131d;
+  font: inherit;
+  white-space: nowrap;
+}
+
 .mc-blog-share {
   display: flex;
   flex-wrap: wrap;

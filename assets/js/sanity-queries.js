@@ -43,7 +43,7 @@ export const postCardFields = `
 `;
 
 export const allPostsQuery = `
-  *[_type == "blogPost" && status == "published" && defined(slug.current)]
+  *[_type == "blogPost" && status == "published"]
   | order(featuredPost desc, publishedAt desc) {
     ${postCardFields}
   }
@@ -59,7 +59,7 @@ export const categoriesQuery = `
 `;
 
 export const singlePostQuery = `
-  *[_type == "blogPost" && status == "published" && slug.current == $slug][0] {
+  *[_type == "blogPost" && status == "published" && (_id == $id || slug.current == $slug)][0] {
     ${postCardFields},
     body[]{
       ...,
