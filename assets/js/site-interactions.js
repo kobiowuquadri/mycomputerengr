@@ -105,6 +105,8 @@
       '<li><a href="' + toLocalPath("pages/blog.html") + '">Blog</a></li>',
       '<li><a href="' + toLocalPath("executive-support/index.html") + '">Executive Support</a></li>',
       '<li><a href="' + toLocalPath("pages/contact-me.html") + '">Request Onsite Support</a></li>',
+      '<li><a href="https://docs.google.com/document/d/1bceoLsf7Ynfi_3hLFdo_7vd55WwSPpkYlhznpzGShgM/edit?usp=sharing" target="_blank" rel="noreferrer noopener">Privacy Policy</a></li>',
+      '<li><a href="https://docs.google.com/document/d/152KPO7xQIcA1h77zHboaTgnR0wbBjdsGBQkwDMc1MgA/edit?usp=sharing" target="_blank" rel="noreferrer noopener">Terms of Use</a></li>',
       "</ul></section>",
       '<section><h3>Recent Posts</h3><div class="mc-footer-recent" data-recent-posts="footer"></div></section>',
       '<section><h3>Visit Us</h3><ul>',
